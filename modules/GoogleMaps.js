@@ -11,11 +11,10 @@
         // --------------------------------------------------
 
 
+        $private.address = '';
         $private.geocoder = '';
         $private.map = '';
-        $private.marker = '';
         $private.$mapContainer = '';
-        $private.address = '';
         $private.marker = '';
 
 
@@ -88,6 +87,7 @@
         $private.responseJSON = function responseJSON( response ) {
             var lat = response.results[0].geometry.location.lat;
             var lng = response.results[0].geometry.location.lng;
+            var marker;
 
             var options = {
                 center : new google.maps.LatLng( lat, lng ),
@@ -98,7 +98,7 @@
 
             $private.map = new google.maps.Map( $private.$mapContainer[0], options );
 
-            $private.marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
                 position: $private.map.getCenter(),
                 map: $private.map,
                 icon: $private.marker
