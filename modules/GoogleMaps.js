@@ -114,7 +114,7 @@
     }; // GoogleMaps
 
 
-    var Module = window.Module || {};
+    window.Module = window.Module || {};
 
     // Exporting to Modules
     Module.GoogleMaps = GoogleMaps;
