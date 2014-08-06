@@ -22,6 +22,42 @@
         // --------------------------------------------------
 
 
+        $public.init = function init() {
+            console.log( 'carregou GoogleMaps.js' );
+            $private.initGoogleMaps();
+        };
+
+
+        // --------------------------------------------------
+
+
+        $public.setMapContainer = function setMapContainer( $mapContainer ) {
+            $private.$mapContainer = $mapContainer;
+            return $public;
+        };
+
+
+        // --------------------------------------------------
+
+
+        $public.setAddress = function setAddress( address ) {
+            $private.address = address;
+            return $public;
+        };
+
+
+        // --------------------------------------------------
+
+
+        $public.setMarker = function setMarker( marker ) {
+            $private.marker = marker;
+            return $public;
+        };
+
+
+        // --------------------------------------------------
+
+
         $private.initGoogleMaps = function initGoogleMaps() {
             if( ! $private.$mapContainer || ! $private.address ) {
                 console.error( 'É necessário definir o container do mapa com setMapContainer() e o endereço com setAddress()' );
@@ -67,42 +103,6 @@
                 map: $private.map,
                 icon: $private.marker
             });
-        };
-
-
-        // ==================================================
-
-
-        $public.init = function init() {
-            console.log( 'carregou GoogleMaps.js' );
-            $private.initGoogleMaps();
-        };
-
-
-        // --------------------------------------------------
-
-
-        $public.setMapContainer = function setMapContainer( $mapContainer ) {
-            $private.$mapContainer = $mapContainer;
-            return $public;
-        };
-
-
-        // --------------------------------------------------
-
-
-        $public.setAddress = function setAddress( address ) {
-            $private.address = address;
-            return $public;
-        };
-
-
-        // --------------------------------------------------
-
-
-        $public.setMarker = function setMarker( marker ) {
-            $private.marker = marker;
-            return $public;
         };
 
 
