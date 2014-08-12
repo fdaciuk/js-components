@@ -24,6 +24,7 @@
 
         $private.canScroll = true;
         $private.doneInfiniteScroll = false;
+        $private.isAjaxLoading = false;
         $private.loadingImage = null;
         $private.scrollTimer = null;
 
@@ -32,6 +33,8 @@
 
 
         $public.init = function init() {
+            console.log( 'carregou InfiniteScroll.js' );
+
             $private.checkInfiniteScrollIsReady();
         };
 
@@ -108,6 +111,7 @@
 
 
         $private.initInfiniteScroll = function initInfiniteScroll() {
+            console.log( 'initInfiniteScroll iniciado!' );
             $private.handleWindowScroll();
             $private.initEvents();
         };
@@ -142,6 +146,7 @@
                 return false;
             }
 
+            console.log( 'Inicia requisição...' );
             $private.beforeInitRequest();
             return $.get( $( $private.get( 'nextButtonSelector' ) )[0].href ).done( $private.successNextPage );
         };
@@ -151,6 +156,8 @@
 
 
         $private.beforeInitRequest = function beforeInitRequest() {
+            $private.isAjaxLoading = true;
+
             // Cria imagem de loading
             if( ! $private.loadingImage ) {
                 $private.loadingImage = $( document.createElement( 'img' ) );
@@ -171,6 +178,7 @@
 
 
         $private.isReadyToScroll = function isReadyToScroll() {
+            console.log( 'Executar somente a cada %dms', $private.get( 'delayBeforeLoad' ) );
             var $infiniteNextButton = $( $private.get( 'nextButtonSelector' ) );
 
             if( $private.doneInfiniteScroll ) {
@@ -179,6 +187,7 @@
 
             if(
                 $private.doneInfiniteScroll ||
+                $private.isAjaxLoading ||
                 ! $private.isEndPage() ||
                 ! $infiniteNextButton[0]
             ) {
@@ -222,11 +231,14 @@
 
             if( ! $responseNextButton[0] ) {
                 $private.doneInfiniteScroll = true;
+                return console.log( 'Não tem mais páginas!' );
             }
         };
 
 
         $private.afterRequest = function afterRequest() {
+            console.log( 'depois da requisição' );
+            $private.isAjaxLoading = false;
             $private.loadingImage.hide();
         };
 
