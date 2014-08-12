@@ -31,8 +31,6 @@
 
 
         $public.init = function init() {
-            console.log( 'carregou InfiniteScroll.js' );
-
             $private.checkInfiniteScrollIsReady();
         };
 
@@ -109,7 +107,6 @@
 
 
         $private.initInfiniteScroll = function initInfiniteScroll() {
-            console.log( 'initInfiniteScroll iniciado!' );
             $private.handleWindowScroll();
             $private.initEvents();
         };
@@ -144,7 +141,6 @@
                 return false;
             }
 
-            console.log( 'Inicia requisição...' );
             $private.beforeInitRequest();
             return $.get( $( $private.get( 'nextButtonSelector' ) )[0].href ).done( $private.successNextPage );
         };
@@ -174,7 +170,6 @@
 
 
         $private.isReadyToScroll = function isReadyToScroll() {
-            console.log( 'Executar somente a cada 300ms' );
             var $infiniteNextButton = $( $private.get( 'nextButtonSelector' ) );
 
             if( $private.doneInfiniteScroll ) {
@@ -226,13 +221,11 @@
 
             if( ! $responseNextButton[0] ) {
                 $private.doneInfiniteScroll = true;
-                return console.log( 'Cabô!' );
             }
         };
 
 
         $private.afterRequest = function afterRequest() {
-            console.log( 'depois da requisição' );
             $private.loadingImage.hide();
         };
 
