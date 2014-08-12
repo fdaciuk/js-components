@@ -11,11 +11,14 @@
         // --------------------------------------------------
 
 
-        $private.address = '';
-        $private.geocoder = '';
-        $private.map = '';
-        $private.$mapContainer = '';
-        $private.marker = '';
+        $private.defaults = {
+            mapContainer : null,
+            address : null,
+            marker : null
+        };
+
+        $private.geocoder = null;
+        $private.map = null;
 
 
         // --------------------------------------------------
@@ -30,8 +33,8 @@
         // --------------------------------------------------
 
 
-        $public.setMapContainer = function setMapContainer( $mapContainer ) {
-            $private.$mapContainer = $mapContainer;
+        $public.set = function set( property, value ) {
+            $private.defaults[ property ] = value;
             return $public;
         };
 
@@ -39,18 +42,29 @@
         // --------------------------------------------------
 
 
-        $public.setAddress = function setAddress( address ) {
-            $private.address = address;
-            return $public;
+        $public.help = function help() {
+            var styleH1 = 'font: bold 16px sans-serif';
+            var styleH2 = 'font: bold 14px sans-serif';
+            var styleH3 = 'font-weight: 700; background: #f0f0f0; color: #333';
+            var styleP = 'color: #333';
+
+            console.log( '' );
+            console.log( '%cGOOGLE MAPS (HELP)', styleH1 );
+            console.log( '%cPARÂMETROS OBRIGATÓRIOS:', styleH2 );
+            console.log( '%c mapContainer (jQuery object): null %c Objeto jQuery do container que vai receber o mapa.', styleH3, styleP );
+            console.log( '%caddress (string): null %c Endereço que será mostrado no mapa.', styleH3, styleP );
+            console.log( '' );
+            console.log( '%cOUTROS PARÂMETROS:', styleH2 );
+            console.log( '%cmarker (url): null %c URL da imagem que será usada como marcador.', styleH3, styleP );
+            console.log( '' );
         };
 
 
         // --------------------------------------------------
 
 
-        $public.setMarker = function setMarker( marker ) {
-            $private.marker = marker;
-            return $public;
+        $private.get = function get( property ) {
+            return $private.defaults[ property ];
         };
 
 
@@ -58,8 +72,8 @@
 
 
         $private.initGoogleMaps = function initGoogleMaps() {
-            if( ! $private.$mapContainer || ! $private.address ) {
-                console.error( 'É necessário definir o container do mapa com setMapContainer() e o endereço com setAddress()' );
+            if( ! google || ! $private.get( 'mapContainer' ) || ! $private.get( 'address' ) ) {
+                console.error( 'Antes de iniciar o Google Maps, é necessário definir os parâmetros obrigatórios. Para saber quais são, execute Module.GoogleMaps.help() no console.' );
                 return false;
             }
 
@@ -73,7 +87,7 @@
         $private.loadMap = function loadMap() {
             var geocodeURL = 'http://maps.googleapis.com/maps/api/geocode/json';
             var addressData = {
-                address : $private.address,
+                address : $private.get( 'address' ),
                 sensor: false
             };
 
@@ -96,12 +110,12 @@
                 scrollwheel: false
             };
 
-            $private.map = new google.maps.Map( $private.$mapContainer[0], options );
+            $private.map = new google.maps.Map( $private.get( 'mapContainer' )[0], options );
 
             marker = new google.maps.Marker({
                 position: $private.map.getCenter(),
                 map: $private.map,
-                icon: $private.marker
+                icon: $private.get( 'marker' )
             });
         };
 
