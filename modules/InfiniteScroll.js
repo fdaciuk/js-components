@@ -86,7 +86,7 @@
 
         $private.checkInfiniteScrollIsReady = function checkInfiniteScrollIsReady() {
             if( ! $private.isInfiniteScrollReady() ) {
-                console.error( 'Antes de iniciar o Infinite Scroll, é necessário definir os parâmetros obrigatórios. Para saber quais são, execute Module.InfiniteScroll.help() no console.' );
+                console.error( 'Antes de iniciar o Infinite Scroll, é necessário definir os parâmetros obrigatórios. Para saber quais são, execute Module.InfiniteScroll().help() no console.' );
                 return false;
             }
 

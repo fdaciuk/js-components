@@ -73,7 +73,7 @@
 
         $private.initGoogleMaps = function initGoogleMaps() {
             if( ! google || ! $private.get( 'mapContainer' ) || ! $private.get( 'address' ) ) {
-                console.error( 'Antes de iniciar o Google Maps, é necessário definir os parâmetros obrigatórios. Para saber quais são, execute Module.GoogleMaps.help() no console.' );
+                console.error( 'Antes de iniciar o Google Maps, é necessário definir os parâmetros obrigatórios. Para saber quais são, execute Module.GoogleMaps().help() no console.' );
                 return false;
             }
 
