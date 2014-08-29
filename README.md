@@ -5,7 +5,8 @@
 ## Módulos
 
 [Google Maps](https://github.com/voltsdigital/js-components/wiki/Google-Maps)  
-[Infinite Scroll](https://github.com/voltsdigital/js-components/wiki/Infinite Scroll)
+[Infinite Scroll](https://github.com/voltsdigital/js-components/wiki/Infinite-Scroll)  
+[Featured Label](https://github.com/voltsdigital/js-components/wiki/Featured-Label)
 
 ## Licença
 The MIT License
