@@ -1,4 +1,17 @@
-;(function( window, document, $, undefined ) {
+;(function ( factory ) {
+    'use strict';
+    /* istanbul ignore next */
+    if ( typeof define === 'function' && define.amd ) {
+        define([ 'jquery' ], factory );
+    }
+    else if ( typeof exports === 'object' ) {
+        exports = module.exports = factory( require( 'jquery' ) );
+    }
+    else {
+        this.Module = ( this.Module || {} );
+        this.Module.GoogleMaps = factory( jQuery );
+    }
+})(function( $ ) {
 
     'use strict';
 
@@ -128,9 +141,6 @@
     }; // GoogleMaps
 
 
-    window.Module = window.Module || {};
+    return GoogleMaps;
 
-    // Exporting to Modules
-    Module.GoogleMaps = GoogleMaps;
-
-})( window, document, jQuery );
+});

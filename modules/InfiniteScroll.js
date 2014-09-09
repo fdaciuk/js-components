@@ -1,4 +1,17 @@
-;(function( window, document, $, undefined ) {
+;(function ( factory ) {
+    'use strict';
+    /* istanbul ignore next */
+    if ( typeof define === 'function' && define.amd ) {
+        define([ 'jquery' ], factory );
+    }
+    else if ( typeof exports === 'object' ) {
+        exports = module.exports = factory( require( 'jquery' ) );
+    }
+    else {
+        this.Module = ( this.Module || {} );
+        this.Module.InfiniteScroll = factory( jQuery );
+    }
+})(function( $ ) {
 
     'use strict';
 
@@ -272,9 +285,6 @@
     }; // InfiniteScroll
 
 
-    window.Module = window.Module || {};
+    return InfiniteScroll;
 
-    // Exporting to Modules
-    Module.InfiniteScroll = InfiniteScroll;
-
-})( window, document, jQuery );
+});

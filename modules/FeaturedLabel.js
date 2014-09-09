@@ -1,4 +1,17 @@
-;(function( window, document, $, undefined ) {
+;(function ( factory ) {
+    'use strict';
+    /* istanbul ignore next */
+    if ( typeof define === 'function' && define.amd ) {
+        define([ 'jquery' ], factory );
+    }
+    else if ( typeof exports === 'object' ) {
+        exports = module.exports = factory( require( 'jquery' ) );
+    }
+    else {
+        this.Module = ( this.Module || {} );
+        this.Module.FeaturedLabel = factory( jQuery );
+    }
+})(function( $ ) {
 
     'use strict';
 
@@ -132,9 +145,6 @@
     }; // FeaturedLabel
 
 
-    window.Module = window.Module || {};
+    return FeaturedLabel;
 
-    // Exporting to Modules
-    Module.FeaturedLabel = FeaturedLabel;
-
-})( window, document, jQuery );
+});
