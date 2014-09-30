@@ -20,21 +20,21 @@
 
         // ------------------------------
 
-        $public.setItem = function setItem( item, data ) {
+        $public.set = function set( item, data ) {
             localStorage.setItem( item, JSON.stringify( data ) );
             return;
         };
 
         // ------------------------------
 
-        $public.getItem = function getItem( item ) {
+        $public.get = function get( item ) {
             var thisItem = localStorage.getItem( item );
             return JSON.parse( thisItem );
         };
 
         // ------------------------------
 
-        $public.removeItem = function removeItem( item ) {
+        $public.remove = function remove( item ) {
             localStorage.removeItem( item );
         };
 

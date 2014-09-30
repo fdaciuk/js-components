@@ -7,7 +7,7 @@
 [Google Maps](https://github.com/voltsdigital/js-components/wiki/Google-Maps)  
 [Infinite Scroll](https://github.com/voltsdigital/js-components/wiki/Infinite-Scroll)  
 [Featured Label](https://github.com/voltsdigital/js-components/wiki/Featured-Label)  
-[Storage]()  
+[Storage](https://github.com/voltsdigital/js-components/wiki/Storage)  
 
 ## Licença
 The MIT License
