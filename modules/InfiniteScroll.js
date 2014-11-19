@@ -1,4 +1,4 @@
-;(function ( factory ) {
+;(function ( root, factory ) {
     'use strict';
     /* istanbul ignore next */
     if ( typeof define === 'function' && define.amd ) {
@@ -8,10 +8,10 @@
         exports = module.exports = factory( require( 'jquery' ) );
     }
     else {
-        this.Module = ( this.Module || {} );
-        this.Module.InfiniteScroll = factory( jQuery );
+        root.Module = ( root.Module || {} );
+        root.Module.InfiniteScroll = factory( jQuery );
     }
-})(function( $ ) {
+})(this, function( $ ) {
 
     'use strict';
 
